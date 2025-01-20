@@ -8,13 +8,12 @@ sudo apt update && sudo apt upgrade -y
 echo "Installing Network Manager..."
 sudo apt install -y network-manager
 
-# Prompt the user for SSID and Password
-read -p "Enter the Access Point Name (SSID): " ssid
-read -sp "Enter the Password: " password
+# Prompt the user for network Password
+read -sp "Enter the network Password: " password
 echo
 
 # Set up the Wi-Fi hotspot
-echo "Setting up the Wi-Fi hotspot with SSID '$ssid'..."
-sudo nmcli d wifi hotspot ifname wlan0 ssid "$ssid" password "$password"
+echo "Setting up the Wi-Fi hotspot with SSID Pi-Gateway"
+sudo nmcli d wifi hotspot ifname wlan0 ssid Pi-Gateway password "$password"
 
 echo "Wi-Fi hotspot setup complete."
