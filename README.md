@@ -3,9 +3,12 @@ Quick and dirty setup for Raspberry Pi Access Point and server.
 
 ## Access Point
 Run the following commands:
-git clone https://github.com/Nick-Henkey/rpi-access-point/
-chmod +x rpi-access-point/*.sh
-./rpi-access-point/raspberry-pi-hotspot.sh
+
+`git clone https://github.com/Nick-Henkey/rpi-access-point/`
+
+`chmod +x rpi-access-point/*.sh`
+
+`./rpi-access-point/raspberry-pi-hotspot.sh`
 
 If the access point is down, try running `sudo nmcli connection up Hotspot`
 
