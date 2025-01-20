@@ -1,5 +1,5 @@
 # Readme
-Quick and dirty setup for Raspberry Pi Access Point and server.
+Quick and dirty setup for Raspberry Pi Access Point and VPN router.
 
 ## Access Point
 Run the following commands:
