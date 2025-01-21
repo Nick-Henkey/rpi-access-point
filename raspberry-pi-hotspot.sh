@@ -13,12 +13,11 @@ if [ ! -f /etc/wpa_supplicant/wpa_supplicant.conf ]; then
   echo "wpa_supplicant.conf file not found. Creating..."
   # Create an empty file using 'touch'
   sudo touch /etc/wpa_supplicant/wpa_supplicant.conf 
+  echo "wpa_supplicant.conf file created"
 fi
 
 # Optional: Set file permissions (if needed)
 sudo chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf 
-
-echo "wpa_supplicant.conf file created or already exists."
 
 # Prompt the user for network Password
 read -sp "Enter the network Password: " password
