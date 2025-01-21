@@ -8,16 +8,6 @@ sudo apt update && sudo apt upgrade -y
 echo "Installing Network Manager..."
 sudo apt install -y network-manager
 
-# Check if wpa_supplicant.conf file exists
-if [ ! -f /etc/wpa_supplicant/wpa_supplicant.conf ]; then
-  echo "wpa_supplicant.conf file not found. Creating..."
-  # Create an empty file using 'touch'
-  sudo touch /etc/wpa_supplicant/wpa_supplicant.conf 
-fi
-
-# Optional: Set file permissions (if needed)
-sudo chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf 
-
 # Prompt the user for network Password
 read -sp "Enter the network Password: " password
 echo
