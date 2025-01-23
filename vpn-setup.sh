@@ -44,7 +44,7 @@ sudo resolvectl dns eth0 1.1.1.3 1.0.0.3
 
 # Set DNS servers for resolved system d service after reboot
 sudo chmod 666 /etc/systemd/resolved.conf
-sudo echo "DNS=1.1.1.1 1.0.0.1" >> /etc/systemd/resolved.conf
+sudo echo "DNS=1.1.1.3 1.0.0.3" >> /etc/systemd/resolved.conf
 sudo chmod 644 /etc/systemd/resolved.conf
 
 echo "DNS settings for eth0:"
