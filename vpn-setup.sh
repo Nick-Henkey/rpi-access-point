@@ -39,6 +39,17 @@ sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 echo "Saving IP tables rules..."
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 
+# Set DNS servers for wlan0
+sudo resolvectl dns eth0 1.1.1.3 1.0.0.3
+
+# Set DNS servers for resolved system d service after reboot
+sudo chmod 666 /etc/systemd/resolved.conf
+sudo echo "DNS=1.1.1.1 1.0.0.1" >> /etc/systemd/resolved.conf
+sudo chmod 644 /etc/systemd/resolved.conf
+
+echo "DNS settings for eth0:"
+resolvectl status eth0
+
 # Enable the OpenVPN server configuration to start on boot
 sudo sed -i 's/#AUTOSTART="all"/AUTOSTART="\/etc\/openvpn\/server\/vpn-server.conf"/g' /etc/default/openvpn
 
