@@ -53,3 +53,27 @@ Some of the VPN DNS leak instructions may be inert on current operating systems.
 I originally came across those articles with the intention of spoofing my location for an approved work remote trip to Bulgaria. Other applications for the bash scripts could be dodging geo-restrictions, getting accurate information from a censored jurisdiction, or just extending a wireless network. While I don't need VPN for any of those applications now, these files will help me keep track of them for the future.
 
 Scripts were written with assistance from ChatGPT and Gemini but don't blame them for the chmod on resolved.conf... that whole operation was my idea. Speaking of, you might want to back that file up before running the VPN setup script. These were written with the assumption that nothing is important on my devices.
+
+THIS SOFTWARE IS WITHOUT WARRANTY - I AM NOT A DEVELOPER
+
+## Modifications
+This project is released under GNU license, you can change it.
+
+### Hotspot Script
+There are fields that you may want to modify in the script:
+
+`sudo nmcli d wifi hotspot ifname <Wireless Adapter> ssid <Network Name> password <Password>`
+
+`<Wireless Adapter>` - may change if you are not using a Raspberry Pi
+
+`<Network Name>` - is hard coded already for ease of use
+
+`Password` - can be hard coded for your own use
+
+
+### VPN Script
+There are fields that you may want to modify in the script:
+
+`sudo wget "$ovpn_link"` can be hard coded for your own use
+
+`1.1.1.3 1.0.0.3` can be found and replaced if you don't like Cloudflare or these specific DNS servers.
