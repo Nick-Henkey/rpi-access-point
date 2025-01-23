@@ -8,6 +8,15 @@ sudo apt update && sudo apt upgrade -y
 echo "Installing Network Manager..."
 sudo apt install -y network-manager
 
+# Check if a Hotspot connection exists
+if nmcli connection show | grep -q "Hotspot"; then
+    echo "Hotspot connection found. Deleting it..."
+    sudo nmcli connection delete Hotspot
+    echo "Hotspot deleted successfully."
+else
+    echo "No Hotspot connection found."
+fi
+
 # Prompt the user for network Password
 read -sp "Enter the network Password: " password
 echo
