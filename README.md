@@ -35,4 +35,4 @@ Add lines that say the following:
 
 `@reboot sudo openvpn --config "/etc/openvpn/server/vpn-server.conf" --auth-nocache`
 
-`sudo resolvectl dns eth0 1.1.1.3 1.0.0.3 &&  systemctl restart systemd-resolved.service`
+`@reboot sudo resolvectl dns eth0 1.1.1.3 1.0.0.3 &&  systemctl restart systemd-resolved.service`
