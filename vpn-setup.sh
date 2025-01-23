@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# SECTION SETS UP VPN SERVICES
 # Install OpenVPN
 echo "Installing OpenVPN..."
 sudo apt install openvpn -y
@@ -17,6 +18,7 @@ sudo chmod 600 /etc/openvpn/auth.txt
 # Navigate to the OpenVPN server directory
 cd /etc/openvpn
 
+echo "Gathering connection details..."
 # Prompt the user for the OpenVPN configuration file link and download it
 read -p "Enter the link to your OpenVPN configuration file: " ovpn_link
 sudo wget "$ovpn_link"
@@ -24,6 +26,19 @@ sudo mv *.ovpn server/vpn-server.conf
 
 # Update the configuration to use the auth.txt file
 sudo sed -i 's/auth-user-pass/auth-user-pass \/etc\/openvpn\/auth.txt/g' server/vpn-server.conf
+
+# SECTION HELPS MITIGATE AND NEUTRALIZE IP LEAKS
+echo "Disabling IPV6..."
+# Edit /etc/sysctl.conf
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
+
+# Edit /boot/cmdline.txt
+echo "ipv6.disable=1" >> /boot/cmdline.txt
+
+# Apply sysctl changes
+sudo sysctl -p
 
 # Flush existing IP tables
 echo "Flushing IP tables..."
@@ -39,6 +54,7 @@ sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 echo "Saving IP tables rules..."
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 
+echo "Setting DNS..."
 # Set DNS servers for wlan0
 sudo resolvectl dns eth0 1.1.1.3 1.0.0.3
 
@@ -50,11 +66,13 @@ sudo chmod 644 /etc/systemd/resolved.conf
 echo "DNS settings for eth0:"
 resolvectl status eth0
 
-# Enable the OpenVPN server configuration to start on boot
-sudo sed -i 's/#AUTOSTART="all"/AUTOSTART="\/etc\/openvpn\/server\/vpn-server.conf"/g' /etc/default/openvpn
-
 # Set static DNS servers
 echo "Configuring static DNS servers..."
 sudo echo "static domain_name_servers=1.1.1.3 1.0.0.3" | sudo tee -a /etc/dhcpcd.conf
+
+# SECTION FOR FINALIZATION
+echo "Finalizing..."
+# Enable the OpenVPN server configuration to start on boot
+sudo sed -i 's/#AUTOSTART="all"/AUTOSTART="\/etc\/openvpn\/server\/vpn-server.conf"/g' /etc/default/openvpn
 
 echo "OpenVPN setup complete!"
