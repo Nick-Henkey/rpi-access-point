@@ -33,5 +33,5 @@ I prefer to run this in cronntab as well, by running:
 
 Add a line that says the following:
 
-`@reboot sudo openvpn --config "/etc/openvpn/client/vpn-server.conf" --auth-nocache`
+`@reboot sudo openvpn --config "/etc/openvpn/server/vpn-server.conf" --auth-nocache`
 
