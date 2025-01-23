@@ -44,6 +44,6 @@ sudo sed -i 's/#AUTOSTART="all"/AUTOSTART="\/etc\/openvpn\/server\/vpn-server.co
 
 # Set static DNS servers
 echo "Configuring static DNS servers..."
-sudo echo "static domain_name_servers=1.1.1.3,1.0.0.3" | sudo tee -a /etc/dhcpcd.conf
+sudo echo "static domain_name_servers=1.1.1.3 1.0.0.3" | sudo tee -a /etc/dhcpcd.conf
 
 echo "OpenVPN setup complete!"
