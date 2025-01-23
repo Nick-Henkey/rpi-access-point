@@ -40,6 +40,8 @@ Add lines that say the following:
 `@reboot sudo resolvectl dns eth0 1.1.1.3 1.0.0.3 &&  systemctl restart systemd-resolved.service`
 
 ## About
+Tested as working on Raspberry Pi 4 running Ubuntu Server Headless 24.04 LTS 64-bit.
+
 These scripts are an enhancement of instructions from PiMyLifeUp articles:
 
 https://pimylifeup.com/raspberry-pi-wireless-access-point/
@@ -50,4 +52,4 @@ Some of the VPN DNS leak instructions may be inert on current operating systems.
 
 I originally came across those articles with the intention of spoofing my location for an approved work remote trip to Bulgaria. Other applications for the bash scripts could be dodging geo-restrictions, getting accurate information from a censored jurisdiction, or just extending a wireless network. While I don't need VPN for any of those applications now, these files will help me keep track of them for the future.
 
-Scripts were written with assistance from ChatGPT and Gemini but don't blame them for the chmod on resolved.conf... that whole operation was my idea. Speaking of, you might want to back that file up before running the VPN setup script.
+Scripts were written with assistance from ChatGPT and Gemini but don't blame them for the chmod on resolved.conf... that whole operation was my idea. Speaking of, you might want to back that file up before running the VPN setup script. These were written with the assumption that nothing is important on my devices.
