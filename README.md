@@ -25,7 +25,7 @@ The VPN script will set up a VPN tunnel for all connected devices. Access Point 
 
 `./rpi-access-point/vpn-setup.sh`
 
-If the VPN is down, try running `sudo openvpn --config "/etc/openvpn/client/vpn-server.conf" --auth-nocache`. This will start it up but take over your terminal session and will exit when you close the window.
+If the VPN is down, try running `sudo openvpn --config "/etc/openvpn/server/vpn-server.conf" --auth-nocache`. This will start it up but take over your terminal session and will exit when you close the window.
 
 I prefer to run this in cronntab as well, by running:
 
