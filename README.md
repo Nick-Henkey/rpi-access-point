@@ -64,16 +64,16 @@ There are fields that you may want to modify in the script:
 
 `sudo nmcli d wifi hotspot ifname <Wireless Adapter> ssid <Network Name> password <Password>`
 
-`<Wireless Adapter>` - may change if you are not using a Raspberry Pi
+`<Wireless Adapter>` - may change if you are not using a Raspberry Pi.
 
-`<Network Name>` - is hard coded already for ease of use
+`<Network Name>` - is hard coded already for ease of use.
 
-`Password` - can be hard coded for your own use
+`Password` - can be hard coded for your own use.
 
 
 ### VPN Script
 There are fields that you may want to modify in the script:
 
-`sudo wget "$ovpn_link"` can be hard coded for your own use
+`sudo wget "$ovpn_link"` can be hard coded for your own use.
 
 `1.1.1.3 1.0.0.3` can be found and replaced if you don't like Cloudflare or these specific DNS servers.
