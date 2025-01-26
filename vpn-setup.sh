@@ -30,12 +30,11 @@ sudo sed -i 's/auth-user-pass/auth-user-pass \/etc\/openvpn\/auth.txt/g' server/
 # SECTION HELPS MITIGATE AND NEUTRALIZE IP LEAKS
 echo "Disabling IPV6..."
 # Edit /etc/sysctl.conf
+sudo chmod 666 /etc/sysctl.conf
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
-
-# Edit /boot/cmdline.txt
-echo "ipv6.disable=1" >> /boot/cmdline.txt
+sudo chmod 644 /etc/sysctl.conf
 
 # Apply sysctl changes
 sudo sysctl -p
